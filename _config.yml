@@ -6,9 +6,10 @@ description: >- # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 url: "https://devsjungle.tech"
-github_username: devsjungles
+github_username: devsjungle
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-admin
