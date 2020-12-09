@@ -1,17 +1,27 @@
 
-# Data Structures and Algorithms to leverage your seniority - Part 1
+<!-- # Data Structures and Algorithms to leverage your seniority - Part 1 -->
+# Knowing these data structures will make you more senior software developer [Part 1]
 
 ## Intro
 
-Our goal here is for you to learn how exactly they work at a lower level, why they are so important and specially where can we apply all this info.
-I could give the final table indicating every data structure there is and their respective memory and time complexities, something like this:
+Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Middle into a Senior level. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms are undoubtedly the fundamental building blocks we work with every single day. Understanding these at a fundamental level will boost your chances of making better and more impactful decisions as a software developer, not to mention the job offers you may get. A sentence a teacher of mine said a long time ago was "The more you study, the luckier you will be" that's exactly how I felt after getting my last job. I kept saying I was lucky of knowing about data structures (which was 90% of the final test), but I had been studying hard for it for some time. The coolest thing is that this knowledge can be applied for any programming language! By the end of this post you should have learned:
+ - what are these data structures?
+ - most common types
+ - what they eat? how they work?
+ - whats the 80/20 around data structures.
 
-			reference: https://www.bigocheatsheet.com/
+I will do it by showing practical *modern* examples for each example we go through! One last thing before we begin, this tutorial is not recommended for complete beginners to programming. With all that being said time let's learn how to travel this jungle!
 
-## Motivation: 
-Why would anyone want to know how data structures work on a lower level, after all the languages we use already take care of it for us right? Yes and no, languages do implement data structures on a lower level for us but knowing which data structure is used and what is their memory and time costs is very important for building faster and more efficient apps. Now you might say “Faster? I don’t need it to be fast, I have other things I gotta worry about, efficiency is not a priority” for which I would reply “Well even if optimizing for speed or memory may not be in your radar right now, things in an ongoing tech project tend to get bigger and more complex, the amount of data we will handle only gets bigger by the day”. After seeing a great talk by Jonathan Blow, it really shifted the way I care about our programs. I have been working in the tech industry for a little over a year now and  I know things get crazy pretty fast, especially in startups. Funny enough we are now optimizing past code, because this was delaying production orders and, most importantly, affecting user experience. Not mentioning the fact that most companies nowadays care a lot about having great fundamentals over data structures and in interviews it's very common to have one or more questions about it (sometimes indirect ones). 
+## What and why data structures and algorithms?
+Very rarely we work with single data values, specially nowadays where we are generating and collecting more and more data by the day. We need to have a way to store all this data. Having different data structures help us deal with this data more efficiently depending on our situation. What about algorithms? any kind of algorithm? not exactly, when you see data structures and algorithms, the latter refers to algorithms regarding the former.
 
-# Arrays
+You may be asking, "But nowadays we gotta learn about these new frameworks and libraries, there are so many of them, I don't have time to learn this, there are more important things to know about!". It's exactly because they are so many that you should learn this, frameworks and libs come and go, but these fundamental data structures exist since the beginning and they will keep on being used for a long time. Not even quantum computing will take these bad boys out. 
+
+Today we will see two data structures Static Arrays and Linked Lists They will serve as an intro, understanding them will enable us to go to bigger and even more awesome things in the near future.
+*Let's begin!*
+
+
+# Static Arrays
 
 The first data structure we will tackle are static arrays. These may look like the most common data structure there is, but actually when you do 
 
@@ -27,8 +37,6 @@ array = [] # in python
 
 they aren’t the same thing under the hood! As we will see each different implementation has its pros and cons. 
 
-
-## Static Arrays
 
 ### How do they work?
 When we tell the c compiler to do:
