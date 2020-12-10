@@ -4,7 +4,8 @@
 
 ## Intro
 
-Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Middle into a Senior level. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms are undoubtedly the fundamental building blocks we work with every single day. Understanding these at a fundamental level will boost your chances of making better and more impactful decisions as a software developer, not to mention the job offers you may get. A sentence a teacher of mine said a long time ago was "The more you study, the luckier you will be" that's exactly how I felt after getting my last job. I kept saying I was lucky of knowing about data structures (which was 90% of the final test), but I had been studying hard for it for some time. The coolest thing is that this knowledge can be applied for any programming language! By the end of this post you should have learned:
+Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Middle into a Senior level. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms are undoubtedly the fundamental building blocks we work with every single day. 
+Understanding these at a fundamental level will boost your chances of making better and more impactful decisions as a software developer, not to mention the job offers you may get. A sentence a teacher of mine said a long time ago was "The more you study, the luckier you will be" that's exactly how I felt after getting my last job. I kept saying I was lucky of knowing about data structures (which was 90% of the final test), but I had been studying hard for it for some time. The coolest thing is that this knowledge can be applied for any programming language! By the end of this post you should have learned:
  - what are these data structures?
  - most common types
  - what they eat? how they work?
@@ -25,17 +26,17 @@ Today we will see two data structures Static Arrays and Linked Lists They will s
 
 The first data structure we will tackle are static arrays. These may look like the most common data structure there is, but actually when you do 
 
+```python
+array = [] # in python
+```
 ```javascript
 var array = [] // in javascript
 ```
 ```c
 int  array[10]; // in C
 ```
-```python
-array = [] # in python
-```
 
-they aren’t the same thing under the hood! As we will see each different implementation has its pros and cons. 
+they are not the same thing under the hood! They all look very similar on a high level, but you will se they make a huge difference when using them. Each different implementation has its pros and cons.
 
 
 ### How do they work?
@@ -128,9 +129,8 @@ A few things to notice are:
 
 Again the time complexity, what is it gonna look like and why? I'll have you figure this one out by yourself. ;)
 
-
-## Practical Application 
-#NOTE: (maybe this should be moved up!)
+## Practical Application
+<!-- #NOTE: (maybe this should be moved up!) -->
 
 Just to sum things up we saw that static arrays have the following characteristics.
 Pros:
@@ -145,7 +145,7 @@ Looking at these let's think of what would be some good use cases for arrays, wh
 
 The traditional example of having an array of students and every element would be a student structure. This might be ok, if we only take past students, but if we are constantly adding or removing students each time we do it will cost us time, not only that but we never know how many students will come in each month or year. 
 
-#IMG of crossword and sales
+<!-- #IMG of crossword and sales -->
 
 A better use case is if you wanted to make a crossword puzzle and each element contains the letter the person has to guess or something more predictable like the revenue of a company by month. You know every month will have a total revenue, maybe divided by the revenue of each sector of the company.
 
@@ -226,7 +226,7 @@ return NULL; //?
 
 Since we deal with pointers inside our nodes we gotta use the funky point syntax, but it's gonna be fine, trust me. The way we traverse the linked list is with the while statement plus the last line inside the while p = p->next; this is equivalent of doing a for loop and incrementing it at the end, but instead of incrementing the number to have access to the next position we "increment" the node we are in, moving it to the left. 
 
-# IMG or GIF ilustrating the swap in pointer value
+<!-- # IMG or GIF ilustrating the swap in pointer value -->
 
 With everything cleared up, let's think about this algorithms time complexity. If the index is 0 it will be the fastest access possible. If it's the last element it will be the slowest possible. On average, as the list gets bigger so does our access, in a linear fashion that is. So O(n) it is.
 
@@ -265,7 +265,7 @@ Guess how much that costs us. The best time possible, constant time aka O(1). Wi
 
 Deletion has the same concept of inserting. We have to go to the node we wanna delete and then just switch the pointers around.
 
-# GIF for pointer deletion switcheroo
+<!-- # GIF for pointer deletion switcheroo -->
 
 An important note is that since we have to do all this memory management by ourselves in C, we can't forget to clear the space in memory the node was occupying previously.
 
@@ -308,4 +308,4 @@ Take a big breath cause this was quite a lot to take in! I don't expect for anyo
 
 What are some interview problems you have ran into? Comment down below!
 
-Next up we'll talk about doubly linked lists, stacks and queues!
+Next up we'll talk about stacks, queues and doubly linked lists!
