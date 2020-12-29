@@ -4,27 +4,27 @@
 
 ## Intro
 
-Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Middle into a Senior level. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms are undoubtedly the fundamental building blocks we work with every single day. 
-Understanding these at a fundamental level will boost your chances of making better and more impactful decisions as a software developer, not to mention the job offers you may get. A sentence a teacher of mine said a long time ago was "The more you study, the luckier you will be" that's exactly how I felt after getting my last job. I kept saying I was lucky of knowing about data structures (which was 90% of the final test), but I had been studying hard for it for some time. The coolest thing is that this knowledge can be applied for any programming language! By the end of this post you should have learned:
+Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know becaus I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Middle into a Senior level. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms, are undoubtedly the fundamental building blocks we work with every single day. 
+Understanding these at a fundamental level will boost your chances of making better and higher impact decisions as a software developer, not to mention the job offers you may get. A sentence a teacher of mine said a long time ago was "The more you study, the luckier you will be". That's exactly how I felt after getting my last job. I kept saying I was lucky of knowing about data structures (which was 90% of the final test), but I had been studying hard for it for some time. The coolest thing is that this knowledge can be applied for any programming language! By the end of this post you should have learned:
  - what are these data structures?
  - most common types
- - what they eat? how they work?
+ - what they eat? How they work?
  - whats the 80/20 around data structures.
 
-I will do it by showing practical *modern* examples for each example we go through! One last thing before we begin, this tutorial is not recommended for complete beginners to programming. With all that being said time let's learn how to travel this jungle!
+I will do it by showing practical *modern* examples for each example we go through! One last thing before we begin, this tutorial is not recommended for complete beginners to programming. With all that being said time, let's learn how to travel this jungle!
 
 ## What and why data structures and algorithms?
-Very rarely we work with single data values, specially nowadays where we are generating and collecting more and more data by the day. We need to have a way to store all this data. Having different data structures help us deal with this data more efficiently depending on our situation. What about algorithms? any kind of algorithm? not exactly, when you see data structures and algorithms, the latter refers to algorithms regarding the former.
+Very rarely we work with single data values, specially nowadays where we are generating and collecting more and more data by the day. We need to have a way to store all this data. Having different data structures help us deal with this data more efficiently depending on our situation. What about algorithms? Any kind of algorithm? Not exactly, when you see data structures and algorithms, the latter refers to algorithms regarding the former.
 
 You may be asking, "But nowadays we gotta learn about these new frameworks and libraries, there are so many of them, I don't have time to learn this, there are more important things to know about!". It's exactly because they are so many that you should learn this, frameworks and libs come and go, but these fundamental data structures exist since the beginning and they will keep on being used for a long time. Not even quantum computing will take these bad boys out. 
 
-Today we will see two data structures Static Arrays and Linked Lists They will serve as an intro, understanding them will enable us to go to bigger and even more awesome things in the near future.
+Today we will see two data structures: Static Arrays and Linked Lists. They will serve as an intro, and understanding them will enable us to go to bigger and even more awesome things in the near future.
 *Let's begin!*
 
 
 # Static Arrays
 
-The first data structure we will tackle are static arrays. These may look like the most common data structure there is, but actually when you do 
+The first data structure we will tackle are static arrays. These may look like the most common data structure we have, but actually when you do: 
 
 ```python
 array = [] # in python
@@ -36,7 +36,7 @@ var array = [] // in javascript
 int  array[10]; // in C
 ```
 
-they are not the same thing under the hood! They all look very similar on a high level, but you will se they make a huge difference when using them. Each different implementation has its pros and cons.
+they are not the same thing under the hood! They all look very similar on a high level, but you will see they make a huge difference when using them. Each different implementation has its pros and cons.
 
 
 ### How do they work?
@@ -49,7 +49,7 @@ int array[10];
 int array[10] = {0, 1, 2, 3, 4, 5, 6, 7};
 ```
 
-what actually happens inside the computer’s memory is that it takes 10 sequential slots of memory with each slot having the size of int. This way it makes it trivial to access each element of the array with a given index. The array variable holds the address in memory to access the first element and using the syntax array[x], where x is a number from 0 to 9, we can go directly to the space in memory we want. This has its benefits, instant access to any given element, but also its downsides. What happens if we want to add an 11th element? In C you would have to create a new array and it would choose another 11 slots in memory to dedicate it to the new array. In C they have another great benefit, you don't have to deal with the funky pointers! Just because you don't have to doesn't mean you can't though.
+what actually happens inside the computer’s memory is that it takes 10 sequential slots of memory with each slot having the size of int. This way it makes it trivial to access each element of the array with a given index. The array variable holds the address in memory to access the first element, and using the syntax array[x], where x is a number from 0 to 9, we can go directly to the space in memory we want. This has its benefits, instant access to any given element, but also its downsides. What happens if we want to add an 11th element? In C you would have to create a new array and it would choose another 11 slots in memory to dedicate it to the new array. In C they have another great benefit, you don't have to deal with the funky pointers! Just because you don't have to, it doesn't mean you can't though.
 
 ### Time Complexity
 
@@ -179,9 +179,18 @@ Disclaimer: for this part you have to know the basics of pointers, we have some 
 
 ```c
 typedef struct n{ // 1
+    int id;
     int value; // 2
     struct n* next; // 3
 } NODE; // 4
+
+
+typedef struct ll{
+    NODE* start;
+} LINKED_LIST;
+
+NODE* p = (NODE*) malloc(sizeof(NODE)); // cria um new_node nó em memória, apontado por p
+free(p); // a área de memória apontada por p é liberada;
 ```
 
 Let's break this down so we get exactly what is happening here, line by line.
@@ -195,6 +204,9 @@ Now that we have the basic gist of how linked lists works let's see how they per
 
 ### Time Complexity
 
+
+
+
 #### Access
 
 Since we don't have the benefits of a sequential space in memory (being able to predict exactly where each slot is), the only place we can find the information for i.e. the last node, is the one before him, and to access that one is the one before him, see where this is going? Let's ilustrate with an example:
@@ -205,9 +217,114 @@ Here we have 3 nodes, they represent 3 people living together. Mary, John and Gr
 
 Great! Let's quickly check how that would work:
 
+<!-- ```c
+void setup_linked_list(LINKED_LIST* l) {
+ l->start = NULL;
+}
+
+void print_linked_list(LINKED_LIST l) {
+    NODE* p = l.start;
+    while (p) {
+        printf("%d ",p->value);
+        p = p->next;
+    }
+}
+
+NODE* get_first_element(LINKED_LIST l) {
+ return l.start;
+}
+
+NODE* get_last_element(LINKED_LIST l) {
+NODE* p = l.start;
+if(p){
+    while(p->next){
+        p = p->next;
+    } 
+}
+ return p;
+}
+
+NODE* get_nth_element(LINKED_LIST l, int n) {
+    NODE* p = l.start;
+    int i = 1; //counting by position, not index
+    if(p){
+        while((p->next) && (i < n)){
+            p = p->next;
+            i++;
+        }
+    }
+    if(i != n){
+        return(NULL);
+    } 
+else return(p);
+}
+
+
+// Quantos elementos existem na lista
+int size_of_linked_list(LINKED_LIST l) {
+    NODE* p = l.start;
+    int size = 0;
+    while (p) {
+        size++;
+        p = p->next;
+    }
+}
+ return(size);
+}
+
+// Busca pela value ch na lista (ordem crescente) retornando p e previous
+NODE* search_sequential_list(int searched_value, LINKED_LIST l, NODE** previous) {
+    NODE* p = l.start;
+    *previous = NULL;
+    while(p) {
+        if(p->value >= searched_value){
+            break;
+        } 
+        *previous = p;
+        p = p->next;
+    }
+    if(p){
+        if(p->value == searched_value){
+            return(p);
+        }
+    }
+    return(NULL);
+}
+
+// Inserção da value ch na lista ordenada sem duplicações
+bool insert_element_linked_list(int new_value , LINKED_LIST* l) {
+    NODE* new_node;
+    NODE* previous;
+
+    new_node = search_sequential_list(new_value, *l, &previous);
+    if(new_node){
+        return(false);
+    }
+    
+    new_node = (NODE*) malloc(sizeof(NODE));
+    new_node->value = new_value;
+
+    if(!l->start) { // 1a. inserção em lista vazia
+        l->start = new_node;
+        new_node->next = NULL;
+    } else {
+        if(!previous) { // inserção no início da lista
+            new_node->next = l->start;
+            l->start = new_node;
+        } else { // inserção após um nó existente
+            new_node->next = previous->next;
+            previous->next = new_node;
+        }
+    }
+    return(true);
+}
+
+```
+ -->
+
 ```c
-//initializing
-NODE* contributions;
+
+LINKED_LIST* contributions;
 
 int access_index = 2;
 NODE* pointer = contributions->next; //?
@@ -286,7 +403,7 @@ my_list = []
 ```
 in python or elixir, what is happening behind the scenes is a linked list! That is very useful to know, you may think twice when adding elements to it. If you don't care about reversing the order you can pre-pend elements to make it super fast. 
 
-If you are not careful you may do an algorithm with quadratic time complexity for not knowing this. Let me ilustrate it with an example:
+    If you are not careful you may do an algorithm with quadratic time complexity for not knowing this. Let me ilustrate it with an example:
 
 ```python3
 all_numbers = [x for x in range(100)]
@@ -308,4 +425,6 @@ Take a big breath cause this was quite a lot to take in! I don't expect for anyo
 
 What are some interview problems you have ran into? Comment down below!
 
-Next up we'll talk about stacks, queues and doubly linked lists!
+Next up we'll talk about stacks, queues and doubly linked lists! All of them build up on our learned knowledge from this post and let's us get closer to mastering the jungle! 
+
+Remember! "The more you study, the luckier you will get". Keep studying!
