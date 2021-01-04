@@ -54,7 +54,7 @@ what actually happens inside the computer’s memory is that it takes 10 sequent
 ### Time Complexity
 
 #### Access 
-As told above, since we know exactly how the data is structured in memory, access is constant, it doesn’t depend on the size of the list. It’s basically a sum. Which for us humans may take a while when we have to sum big numbers but for computers it’s easy as pie.
+As told above, since we know exactly how the data is structured in memory, access is constant, and it doesn’t depend on the size of the list. It’s basically a sum. Which for us humans may take a while when we have to sum big numbers, but for computers it’s easy as pie.
 
 ```c
 // nth element address = first element address + (n - 1)
@@ -63,7 +63,7 @@ array[4];
 ```
 
 ### Search
-Let’s think, how do we find the number 6 inside our array? If we know how the array was initialized it’s easy, we know it’s on index 6, so array[6] gets it. Unfortunately that never happens, so we have to search every element in the array with a simple search, something like:
+Let’s think, how do we find the number 6 inside our array? If we know how the array was initialized, it’s easy. We know it’s on index 6, so array[6] gets it. Unfortunately, that never happens, so we have to search every element in the array with a simple search, something like:
 
 ```c
 int searched_number = 6;
@@ -76,13 +76,13 @@ for(int i = 0 ; i < array_size; i++){
 return -1;
 ```
 
-You might be confused with the last line returning -1, that is something very common in C programs where you send an agreed upon value considered the value when stuff goes wrong, or simply when a specific case happens, in this case not finding the searched number inside our array.
+You might be confused with the last line returning -1. That is something very common in C programs where you send an agreed upon value considered the value when stuff goes wrong, or simply when a specific case happens. In this case, stuff goes wrong means not finding the searched number inside our array.
 
-Finally, what would the cost of this algorithm look like? Well, best case scenario the number we are looking for would be at the first position, worst case scenario the number would not be inside our array, but he would still need to travel the whole array to make sure. If the array has 10 positions it’s practically instant, but what if they are huge, like millions of numbers inside them? that would take a lot more time to process, and this growth is linear to the size of our input (our array). A fancy way of saying this is that the array has O(n) time complexity when performing a search algorithm.
+Finally, what would the cost of this algorithm look like? Well, best case scenario the number we are looking for would be at the first position; worst case scenario the number would not be inside our array, but he would still need to travel the whole array to make sure. If the array has 10 positions, it’s practically instant. But what if they are huge like millions of numbers inside them? That would take a lot more time to process, and this growth is linear to the size of our input (our array). A fancy way of saying this is that the array has O(n) time complexity when performing a search algorithm.
 
 ### Insertion
 
-This one is a little trickier, it involves us having to move things around, let’s imagine we want to insert the number 10 between 3 and 4. 
+This one is a little trickier. It involves us having to move things around. Let’s imagine we want to insert the number 10 between 3 and 4. 
 ```c
 int array[10] = {0, 1, 2, 3, 4, 5, 6, 7, <empty>, <empty>, <empty>};          
                            #/\ put 10 here
@@ -98,13 +98,13 @@ for(int i = size_of_array - 1; i >= index_to_insert; i--){
 array[index_to_insert] = number_to_insert;
 ```
 
-But this has its limitations, what if the array was full? we wouldn't be able to insert anything without removing another number or creating a new array with enough space for all elements. This is one of the drawbacks for static arrays.
+But this has its limitations. What if the array was full? We wouldn't be able to insert anything without removing another number or creating a new array with enough space for all elements. This is one of the drawbacks for static arrays.
 
-Let's reason again about its time complexity. Best case scenario the number we had to insert would be at the very end, so me would have to do no moving around. Worst case? It would be at the very beginning, having to move all numbers one slot to the side. So here the time complexity would increase linearly as the size of the input (our array) increases. The fancy way of saying it is the time complexity for this operation is O(n).
+Let's reason again about its time complexity. Best case scenario the number we had to insert would be at the very end, so we would have to do no moving around. Worst case? It would be at the very beginning, having to move all numbers one slot to the side. So here the time complexity would increase linearly as the size of the input (our array) increases. The fancy way of saying this is "the time complexity for this operation is O(n)".
 
 ### Deletion
 
-The same analogy from insertion applies to deletion, we need to move things around after deleting a number. 
+The same analogy from insertion applies to deletion, than we need to move things around after deleting a number. 
 
 ```c
 // getting from here
@@ -124,30 +124,30 @@ for(int i = index_to_insert; i < size_of_array - 1; i++){
 ```
 
 A few things to notice are:
-- we now move from left to right, pulling the next value into the current value.
-- we have to stop at size_of_array - 2, because if we go to i = size_of_array - 1 and then do the operation array[i+1] we are accessing the 11th position of an array of size 10. Never a good idea!
+- we now move from left to right, pulling the next value into the current value,
+- we have to stop at size_of_array - 2, because if we go to i = size_of_array - 1 and then do the operation array[i+1], we are accessing the 11th position of an array of size 10. Never a good idea!
 
-Again the time complexity, what is it gonna look like and why? I'll have you figure this one out by yourself. ;)
+Again the time complexity... what is it gonna look like and why? I'll have you figure this one out by yourself. ;)
 
 ## Practical Application
 <!-- #NOTE: (maybe this should be moved up!) -->
 
 Just to sum things up we saw that static arrays have the following characteristics.
 Pros:
-- No need to handle pointers (which is good for beginners but also limits your knowledge)
+- No need to handle pointers (which is good for beginners but also limits your knowledge),
 - Accessing a value takes constant time or O(1)
 
 Cons:
-- Searching, Inserting or Deleting take linear time O(n), which is not terrible but also not great.
+- Searching, Inserting or Deleting take linear time O(n), which is not terrible but also not great,
 - The size needs to be declared beforehand and it's fixed, you can either run out of memory or you have too much space and left out memory that isn't used.
 
 Looking at these let's think of what would be some good use cases for arrays, where we leverage the pros and nullify or mitigate the cons.
 
-The traditional example of having an array of students and every element would be a student structure. This might be ok, if we only take past students, but if we are constantly adding or removing students each time we do it will cost us time, not only that but we never know how many students will come in each month or year. 
+The traditional example of having an array of students and every element would be a student structure. This might be ok, if we only take past students. But if we are constantly adding or removing students each time we do it will cost us time, not only that but we never know how many students will come in each month or year. 
 
 <!-- #IMG of crossword and sales -->
 
-A better use case is if you wanted to make a crossword puzzle and each element contains the letter the person has to guess or something more predictable like the revenue of a company by month. You know every month will have a total revenue, maybe divided by the revenue of each sector of the company.
+A better use case is if you wanted to make a crossword puzzle and each element contains the letter the person has to guess, or something more predictable like the revenue of a company by month. You know every month will have a total revenue, maybe divided by the revenue of each sector of the company.
 
 ### Common Static Array Questions
 - How arrays work?
@@ -167,13 +167,13 @@ it allocates that space and fills every slot with a 0 in it. It spends a little 
 
 # Linked Lists
 
-Linked lists are one of the most primitive and old data structures created, yet they are still used to this day by most if not all programming languages out there. Many developers use them without knowing the hows and whys behind these minimalistic masterpieces. 
+Linked lists are one of the most primitive and old data structures created. Yet they are still used to this day by most if not all programming languages out there. Many developers use them without knowing the hows and whys behind these minimalistic masterpieces. 
 
 They have a nice contrast with static arrays, they serve a very different purpose as we'll see shortly.
 
 ### How do they work?
 
-A linked list is basically a bunch of nodes connected to one another in a sequential manner. Instead of having a sequential space in memory now "random" places in memory are chosen to store our data. "How do I know which element goes before which?" you might ask, in every node of our linked list we have the location of the next node! The structure of a node would have to be implemented by hand using C and it would look something like this:
+A linked list is basically a bunch of nodes connected to one another in a sequential manner. Instead of having a sequential space in memory now "random" places in memory are chosen to store our data. "How do I know which element goes before which?", you might ask. In every node of our linked list we have the location of the next node! The structure of a node would have to be implemented by hand using C and it would look something like this:
 
 Disclaimer: for this part you have to know the basics of pointers, we have some resources to guide you here and we are more than happy to explain any questions you might have about them! Recommended resources.
 
@@ -194,13 +194,13 @@ free(p); // a área de memória apontada por p é liberada;
 ```
 
 Let's break this down so we get exactly what is happening here, line by line.
-1 and 4 - "struct n" this is just the c way of making a new structure and typedef we are creating an alias for our structure, instead of always having to call it using struct n we can simply call it NODE. A more generic typedef could be something like typedef int i; here we are aliasing the int type to i.
+1 and 4 - "struct n" this is just the C way of making a new structure and typedef we are creating an alias for our structure, instead of always having to call it using struct n we can simply call it NODE. A more generic typedef could be something like typedef int i; here we are aliasing the int type to i.
 2 - is self explanatory...
-3 - we declare a variable called next and its type is pointer of struct n. A little confusing but it means we want each node to point to the next node, the node type is struct n  so we get struct n*;
+3 - we declare a variable called next and its type is pointer of struct n. A little confusing but it means we want each node to point to the next node, the node type is struct n, so we get struct n*;
 
-Wait a minute, didn't you just said we could use NODE instead of struct n, why not NODE*? Great question! The statement typedef only ends at line 4, so inside line 3 the aliasing isn't complete, that's why we have to use the verbose name struct n!
+Wait a minute, didn't you just said we could use NODE instead of struct n. Why not NODE*? Great question! The statement typedef only ends at line 4. So, inside line 3, the aliasing isn't complete, that's why we have to use the verbose name struct n!
 
-Now that we have the basic gist of how linked lists works let's see how they perform!
+Now that we have the basic gist of how linked lists works, let's see how they perform!
 
 ### Time Complexity
 
@@ -209,11 +209,11 @@ Now that we have the basic gist of how linked lists works let's see how they per
 
 #### Access
 
-Since we don't have the benefits of a sequential space in memory (being able to predict exactly where each slot is), the only place we can find the information for i.e. the last node, is the one before him, and to access that one is the one before him, see where this is going? Let's ilustrate with an example:
+Since we don't have the benefits of a sequential space in memory (being able to predict exactly where each slot is), the only place we can find the information for i.e. the last node, is the one before him, and to access that one is the one before him. See where this is going? Let's ilustrate with an example:
 
 # IMG nodes connected.
 
-Here we have 3 nodes, they represent 3 people living together. Mary, John and Griselda, each having contributed 5, 2 and 6 dollars. The value inside each node indicates the amount of times their contributions to the house they live in. If we wanna know what's Griselda's contribution we have to get her address from John's node... And to get John's node address we have to get Mary's address. Since Mary is the first node we have to have it saved somewhere in order to access it, much like we keep an static array first position of the sequence.
+Here we have 3 nodes and they represent 3 people living together. Mary, John and Griselda, each having contributed 5, 2 and 6 dollars. The value inside each node indicates the amount of times their contributions to the house they live in. If we wanna know what's Griselda's contribution, we have to get her address from John's node... And to get John's node address, we have to get Mary's address. Since Mary is the first node, we have to have it saved somewhere in order to access it, much like we keep an static array first position of the sequence.
 
 Great! Let's quickly check how that would work:
 
@@ -345,11 +345,11 @@ Since we deal with pointers inside our nodes we gotta use the funky point syntax
 
 <!-- # IMG or GIF ilustrating the swap in pointer value -->
 
-With everything cleared up, let's think about this algorithms time complexity. If the index is 0 it will be the fastest access possible. If it's the last element it will be the slowest possible. On average, as the list gets bigger so does our access, in a linear fashion that is. So O(n) it is.
+With everything cleared up, let's think about this algorithms time complexity. If the index is 0, it will be the fastest access possible. If it's the last element, it will be the slowest possible. On average, as the list gets bigger so does our access, in a linear fashion that is. So O(n) it is.
 
 #### Search
 
-The algorithm for searching is almost identical to the one for accessing, the only difference is that we stop if we find the node with the value we are looking for.
+The algorithm for searching is almost identical to the one for accessing. The only difference is that we stop if we find the node with the value we are looking for.
 
 ```c
 NODE* contributions;
@@ -372,11 +372,11 @@ Much like accessing, we gotta go through every node and check their value indepe
 
 #### Insertion
 
-Up until now you might be thinking, wow linked lists suck, compared to static arrays they are worse for accessing and the same for searching, why would anyone use them? Here is where they shine, inserting! At least for one specific type of insertion, pre-pending. If you want to insert a new node on the very beginning of our list, you have to do a simple pointer switcheroo. First we create the new node with the new value, then we take the pointer of this node and point it to the first node of the list. Lastly we take the initial pointer (the one pointing to the beginning of the list) and point him to our new node! Confusing? Check out this awesome animation.
+Up until now you might be thinking "wow, linked lists suck". Compared to static arrays, they are worse for accessing and the same for searching. So why would anyone use them? Here is where they shine, inserting! At least for one specific type of insertion, pre-pending. If you want to insert a new node on the very beginning of our list, you have to do a simple pointer switcheroo. First we create the new node with the new value, then we take the pointer of this node and point it to the first node of the list. Lastly we take the initial pointer (the one pointing to the beginning of the list) and point him to our new node! Confusing? Check out this awesome animation.
 
 # GIF for pointer switcheroo
 
-Guess how much that costs us. The best time possible, constant time aka O(1). With the added benefit of our list never running out of space! Of course this would be different if we really wanted to add this node to the end of our list, at least the way we have the list setup now we do. On average this operation time would cost us O(n) time, just because we would have to go all the way to the position we want to insert. 
+Guess how much that costs us. The best time possible, constant time aka O(1). With the added benefit of our list never running out of space! Of course this would be different if we really wanted to add this node to the end of our list; at least the way we have the list setup now we do. On average this operation time would cost us O(n) time, just because we would have to go all the way to the position we want to insert. 
 
 #### Deletion
 
@@ -401,9 +401,9 @@ This datastructure has a lot of variations, too many to cover on this post, but 
 ```python3
 my_list = []
 ```
-in python or elixir, what is happening behind the scenes is a linked list! That is very useful to know, you may think twice when adding elements to it. If you don't care about reversing the order you can pre-pend elements to make it super fast. 
+in python or elixir, what is happening behind the scenes is a linked list! That is very useful to know, and you may think twice when adding elements to it. If you don't care about reversing the order, you can pre-pend elements to make it super fast. 
 
-    If you are not careful you may do an algorithm with quadratic time complexity for not knowing this. Let me ilustrate it with an example:
+    If you are not careful, you may do an algorithm with quadratic time complexity for not knowing this. Let me ilustrate it with an example:
 
 ```python3
 all_numbers = [x for x in range(100)]
@@ -417,7 +417,7 @@ for number in all_numbers:
 
 What is the time complexity for this algorithm? If you glance at it, you may think, it's linear, it only has 1 for loop, the bigger the all_numbers array is the longer the time linearly. But what you don't take into consideration is that evens.append is also linear time, but not from the same array. 
 
-As we add elements to evens we need to go through every element of that list to get to the end and then add the new element. So our time would be O(n*k) where n is the size of all_numbers and k is the size of evens.
+As we add elements to evens we need to go through every element of that list to get to the end and then add the new element. So our time would be O(n*k), where n is the size of all_numbers and k is the size of evens.
 
 # Conclusion
 
