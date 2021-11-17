@@ -1,26 +1,27 @@
 
 <!-- # Data Structures and Algorithms to leverage your seniority - Part 1 -->
-# Knowing these data structures will make you more senior software developer [Part 1]
+# Knowing these data structures will make you a more senior software developer [Part 1]
 
 ## Intro
 
-Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know becaus I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Middle into a Senior level. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms, are undoubtedly the fundamental building blocks we work with every single day. 
+Something I stumble upon very often are thirsty software developers, traveling the corporate jungle, lost, confused with no idea where to go to. I know because I have felt like this numerous times. Specially when it came to leveling up my skills going from a Junior/Mid-Level into a Senior level developer. Heck! I am still learning a lot about it and although there are several aspects to it, when it comes to hard skills, data structures and algorithms, are undoubtedly the fundamental building blocks we work with every single day. 
 Understanding these at a fundamental level will boost your chances of making better and higher impact decisions as a software developer, not to mention the job offers you may get. A sentence a teacher of mine said a long time ago was "The more you study, the luckier you will be". That's exactly how I felt after getting my last job. I kept saying I was lucky of knowing about data structures (which was 90% of the final test), but I had been studying hard for it for some time. The coolest thing is that this knowledge can be applied for any programming language! By the end of this post you should have learned:
- - what are these data structures?
- - most common types
- - what they eat? How they work?
- - whats the 80/20 around data structures.
 
-I will do it by showing practical *modern* examples for each example we go through! One last thing before we begin, this tutorial is not recommended for complete beginners to programming. With all that being said time, let's learn how to travel this jungle!
+### - What are the most common types
+### - What they eat? How they work?
+### - What is the 80/20 around data structures.
+
+I will do it by showing practical and *modern* examples for each example we go through! One last thing before we begin, this tutorial is not recommended for complete beginners to programming. With all that being said, let's learn how to navigate this jungle!
 
 ## What and why data structures and algorithms?
 Very rarely we work with single data values, specially nowadays where we are generating and collecting more and more data by the day. We need to have a way to store all this data. Having different data structures help us deal with this data more efficiently depending on our situation. What about algorithms? Any kind of algorithm? Not exactly, when you see data structures and algorithms, the latter refers to algorithms regarding the former.
 
-You may be asking, "But nowadays we gotta learn about these new frameworks and libraries, there are so many of them, I don't have time to learn this, there are more important things to know about!". It's exactly because they are so many that you should learn this, frameworks and libs come and go, but these fundamental data structures exist since the beginning and they will keep on being used for a long time. Not even quantum computing will take these bad boys out. 
+You may be asking, "But nowadays we gotta learn about these new frameworks and libraries, there are so many of them, I don't have time to learn this, there are more important things to know about!". It's exactly because they are so many frameworks and libraries that you should learn this fundamental idea, frameworks and libs come and go, but these fundamental data structures exist since the beginning of time (for programming that is) and they will keep on being used for a long time. Not even quantum computing will take these bad boys out. 
 
 Today we will see two data structures: Static Arrays and Linked Lists. They will serve as an intro, and understanding them will enable us to go to bigger and even more awesome things in the near future.
 *Let's begin!*
 
+<!-- SPLIT THIS PART INTO ANOTHER POST!!! -->
 
 # Static Arrays
 
@@ -36,44 +37,44 @@ var array = [] // in javascript
 int  array[10]; // in C
 ```
 
-they are not the same thing under the hood! They all look very similar on a high level, but you will see they make a huge difference when using them. Each different implementation has its pros and cons.
+You may think they are the same thing under the hood, but they aren't!! They all look very similar on a high level, but you will see they make a huge difference when using them, specially when working with large amounts of data. Each different implementation has its pros and cons.
 
 
-### How do they work?
-When we tell the c compiler to do:
+## How do they work?
+When we tell the C compiler to do:
 
 ```c
-// c code below
 int array[10]; 
 // or
 int array[10] = {0, 1, 2, 3, 4, 5, 6, 7};
 ```
 
-what actually happens inside the computer’s memory is that it takes 10 sequential slots of memory with each slot having the size of int. This way it makes it trivial to access each element of the array with a given index. The array variable holds the address in memory to access the first element, and using the syntax array[x], where x is a number from 0 to 9, we can go directly to the space in memory we want. This has its benefits, instant access to any given element, but also its downsides. What happens if we want to add an 11th element? In C you would have to create a new array and it would choose another 11 slots in memory to dedicate it to the new array. In C they have another great benefit, you don't have to deal with the funky pointers! Just because you don't have to, it doesn't mean you can't though.
+what actually happens inside the computer’s memory is that it takes 10 sequential slots of memory with each slot having the size of int (4 bytes or 24 bits). This way it makes it trivial to access each element of the array with a given index. The array variable holds the address in memory to access the first element, and using the syntax `array[x]`, where x is a number from 0 to 9, we can go directly to the space in memory we want. This has its benefits, instant access to any given element, but also its downsides. What happens if we want to add an 11th element? In C you would have to create a new array and it would choose another 11 slots in memory to dedicate it to the new array. This method provides another benefit, you don't have to deal with the funky pointers (secretly you are doing pointer logic)! Just because you don't have to, it doesn't mean you can't though.
 
 ### Time Complexity
 
 #### Access 
-As told above, since we know exactly how the data is structured in memory, access is constant, and it doesn’t depend on the size of the list. It’s basically a sum. Which for us humans may take a while when we have to sum big numbers, but for computers it’s easy as pie.
+As told above, since we know exactly how the data is structured in memory, access is constant, and it doesn’t depend on the size of the list. Under the hood you are doing pointer logic, basically summing the adress of the array with the index times the size of the data type, since every data is sequential and each slot has a fixed size, we can go directly to the exact location in memmory if we apply the function described `memmory_slot = vector_start_slot + index * size_of_data_type`. Which for us humans may take a while when we have to sum big numbers, but for computers it’s easy as pie.
 
 ```c
 // nth element address = first element address + (n - 1)
-
-array[4];
+int number_we_want = array[4];
 ```
 
 ### Search
-Let’s think, how do we find the number 6 inside our array? If we know how the array was initialized, it’s easy. We know it’s on index 6, so array[6] gets it. Unfortunately, that never happens, so we have to search every element in the array with a simple search, something like:
+Let’s think, how do we find the number 6 inside our array? If we know how the array was initialized, it’s easy. We know it’s on index 6, so array[6] gets it for us. Unfortunately, knowing beforehand the exact location of our desired data rarely happens, so we have to search every element in the array with a simple search, something like:
 
 ```c
-int searched_number = 6;
-int array_size = 10;
-for(int i = 0 ; i < array_size; i++){
-	if(array[i] == searched_number){
-		return i;
-	}
-} 
-return -1;
+int find_number_in_array(int* array) {
+    int searched_number = 6;
+    int array_size = 10;
+    for(int i = 0 ; i < array_size; i++){
+        if(array[i] == searched_number){
+            return i;
+        }
+    } 
+    return -1;
+}
 ```
 
 You might be confused with the last line returning -1. That is something very common in C programs where you send an agreed upon value considered the value when stuff goes wrong, or simply when a specific case happens. In this case, stuff goes wrong means not finding the searched number inside our array.
@@ -87,39 +88,43 @@ This one is a little trickier. It involves us having to move things around. Let�
 int array[10] = {0, 1, 2, 3, 4, 5, 6, 7, <empty>, <empty>, <empty>};          
                            #/\ put 10 here
 ```
-well we would have to move numbers 4, 5, 6 and 7 one slot to the side and then put 10 on the 5th position (index 4). Let’s analyze this algorithm:
+Unless we want to override the existing list, we will have to move numbers 4, 5, 6 and 7 one slot to the side and then put 10 on the 5th position (index 4). Let’s analyze this algorithm:
 
 ```c
-int index_to_insert = 4;
-int number_to_insert = 10;
-for(int i = size_of_array - 1; i >= index_to_insert; i--){
-    array[i] = array[i-1];
+void insert_element_in_array(int* array, int index_to_inser, int element_to_insert) {
+
+    for(int i = size_of_array - 1; i >= index_to_insert; i--){
+        array[i] = array[i-1];
+    }
+    array[index_to_insert] = number_to_insert;
 }
-array[index_to_insert] = number_to_insert;
 ```
 
-But this has its limitations. What if the array was full? We wouldn't be able to insert anything without removing another number or creating a new array with enough space for all elements. This is one of the drawbacks for static arrays.
+But this has its limitations. What if the array was full? We wouldn't be able to insert anything without removing another number or creating a new array with enough spaces for all elements. This is one of the drawbacks for static arrays.
 
 Let's reason again about its time complexity. Best case scenario the number we had to insert would be at the very end, so we would have to do no moving around. Worst case? It would be at the very beginning, having to move all numbers one slot to the side. So here the time complexity would increase linearly as the size of the input (our array) increases. The fancy way of saying this is "the time complexity for this operation is O(n)".
 
 ### Deletion
 
-The same analogy from insertion applies to deletion, than we need to move things around after deleting a number. 
+The same analogy from insertion applies to deletion, the fact that we need to move things around after deleting a number. 
 
 ```c
 // getting from here
 array = {0, 1, 2, 3, 4, 5, 6, 7};
-
+                
 //to here
 array = {0, 1, 2, 3, 5, 6, 7};
+                // /\ 4 deleted
 ```
 
 As you may guess the code would be very similar to inserting.
 
 ```c
-int index_to_remove = 4;
-for(int i = index_to_insert; i < size_of_array - 1; i++){
-    array[i] = array[i+1];
+function delete_element_in_array(int* array, int index_to_remove){
+
+    for(int i = index_to_insert; i < size_of_array - 1; i++){
+        array[i] = array[i+1];
+    }
 }
 ```
 
@@ -134,16 +139,17 @@ Again the time complexity... what is it gonna look like and why? I'll have you f
 
 Just to sum things up we saw that static arrays have the following characteristics.
 Pros:
-- No need to handle pointers (which is good for beginners but also limits your knowledge),
-- Accessing a value takes constant time or O(1)
+- No need to handle pointers (which is good for beginners but also has limitations),
+- Accessing a value takes constant time a.k.a. O(1) ("Big O of 1")
 
 Cons:
 - Searching, Inserting or Deleting take linear time O(n), which is not terrible but also not great,
-- The size needs to be declared beforehand and it's fixed, you can either run out of memory or you have too much space and left out memory that isn't used.
+- The size needs to be declared beforehand and it's fixed, you can either run out of memory (very bad) or you have too much space and left out memory that isn't used (kinda bad).
 
 Looking at these let's think of what would be some good use cases for arrays, where we leverage the pros and nullify or mitigate the cons.
 
-The traditional example of having an array of students and every element would be a student structure. This might be ok, if we only take past students. But if we are constantly adding or removing students each time we do it will cost us time, not only that but we never know how many students will come in each month or year. 
+<!-- Please update the example, school and student examples are so boring im gonna die -->
+The traditional example of having an array of ninjas and every element would be a ninja structure (the datatype would be the ninja type). This might be ok, if we only need to look up existing ninjas in our arrays. But if we are constantly adding or removing ninjas each time we do it will cost us precious time, not only that but we never know how many ninjas may show up every month or year, ninjas are unpredictable you know?. 
 
 <!-- #IMG of crossword and sales -->
 
@@ -164,6 +170,11 @@ Java is very similar to C, the major difference is that when we do:
 int array[10];
 ```
 it allocates that space and fills every slot with a 0 in it. It spends a little more processing, but it may be useful if you weren't planning on filling the slots instantly with something else.
+
+
+
+<!-- SPLIT THIS PART INTO ANOTHER POST!!! -->
+
 
 # Linked Lists
 
